@@ -1,0 +1,78 @@
+<?php
+$ID_USER = $_SESSION['LOGINUS_INV'];
+
+$ID_PENGELUARAN="";
+$TANGGAL_KELUAR_AWAL = date('Y-m-01');
+$TANGGAL_KELUAR_AKHIR = date('Y-m-t');
+$KETERANGAN_PENGELUARAN="";
+$ID_KATEGORI = "";
+$ID_BARANG = "";
+$NO_BATCH = "";
+$KETERANGAN_PERSEDIAAN="";
+
+$ID_KATEGORI_EDIT = "";
+$ID_BARANG_EDIT = "";
+$NO_BATCH_EDIT = "";
+
+if (isset($_POST['cari'])) {
+    $ID_PENGELUARAN = $_POST['ID_PENGELUARAN'];
+    $TANGGAL_KELUAR_AWAL = $_POST['TANGGAL_KELUAR_AWAL'];
+    $TANGGAL_KELUAR_AKHIR = $_POST['TANGGAL_KELUAR_AKHIR'];
+    $KETERANGAN_PENGELUARAN = $_POST['KETERANGAN_PENGELUARAN'];
+    $ID_KATEGORI = $_POST['ID_KATEGORI'];
+    $ID_BARANG = $_POST['ID_BARANG'];
+    $NO_BATCH = $_POST['NO_BATCH'];
+    $KETERANGAN_PERSEDIAAN = $_POST['KETERANGAN_PERSEDIAAN'];
+
+    $getBarang = GetQuery2("SELECT ID_BARANG ID_BARANG,NAMA_BARANG FROM m_barang WHERE STATUS = 1 AND ID_KATEGORI = :ID_KATEGORI", [':ID_KATEGORI' => $ID_KATEGORI]);
+
+    $getBatch = GetQuery2("SELECT NO_BATCH NO_BATCH FROM t_persediaan WHERE STATUS = 1 AND ID_BARANG = :ID_BARANG GROUP BY NO_BATCH", [':ID_BARANG' => $ID_BARANG]);
+
+    $ID_KATEGORI_EDIT = $ID_KATEGORI;
+    $ID_BARANG_EDIT = $ID_BARANG;
+    $NO_BATCH_EDIT = $NO_BATCH;
+
+    $query = "SELECT m.*,d.NO_BATCH,CASE WHEN d.DK = 'D' THEN 'Debit' ELSE 'Kredit' END DK_DESK,REPLACE(d.QTY,'-','') QTY,b.ID_BARANG,b.NAMA_BARANG,b.SATUAN,k.NAMA_KATEGORI
+    FROM t_pengeluaran m
+    LEFT JOIN t_persediaan d ON m.ID_PENGELUARAN = d.ID_TRANSAKSI
+    LEFT JOIN m_barang b ON d.ID_BARANG = b.ID_BARANG
+    LEFT JOIN m_kategori k ON k.ID_KATEGORI = b.ID_KATEGORI
+    WHERE m.`STATUS` = 1 AND m.ID_PENGELUARAN LIKE :ID_PENGELUARAN AND m.TANGGAL_KELUAR BETWEEN :TANGGAL_KELUAR_AWAL AND :TANGGAL_KELUAR_AKHIR AND m.KETERANGAN LIKE :KETERANGAN_PENGELUARAN AND b.ID_KATEGORI LIKE :ID_KATEGORI AND b.ID_BARANG LIKE :ID_BARANG AND d.NO_BATCH LIKE :NO_BATCH AND d.KETERANGAN LIKE :KETERANGAN_PERSEDIAAN";
+    $params = array(
+        ":ID_PENGELUARAN" => "%" . $_POST['ID_PENGELUARAN'] . "%",
+        ":TANGGAL_KELUAR_AWAL" => $_POST['TANGGAL_KELUAR_AWAL'],
+        ":TANGGAL_KELUAR_AKHIR" => $_POST['TANGGAL_KELUAR_AKHIR'],
+        ":KETERANGAN_PENGELUARAN" => "%" . $_POST['KETERANGAN_PENGELUARAN'] . "%",
+        ":ID_KATEGORI" => "%" . $_POST['ID_KATEGORI'] . "%",
+        ":ID_BARANG" => "%" . $_POST['ID_BARANG'] . "%",
+        ":NO_BATCH" => "%" . $_POST['NO_BATCH'] . "%",
+        ":KETERANGAN_PERSEDIAAN" => "%" . $_POST['KETERANGAN_PERSEDIAAN'] . "%"
+    );
+
+    $getPengeluaran = GetQuery2($query, $params);
+    $rowBarang = $getBarang->fetchAll(PDO::FETCH_ASSOC);
+    $rowBatch = $getBatch->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $query = "SELECT m.*,d.NO_BATCH,CASE WHEN d.DK = 'D' THEN 'Debit' ELSE 'Kredit' END DK_DESK,REPLACE(d.QTY,'-','') QTY,b.ID_BARANG,b.NAMA_BARANG,b.SATUAN,k.NAMA_KATEGORI
+            FROM t_pengeluaran m
+            LEFT JOIN t_persediaan d ON m.ID_PENGELUARAN = d.ID_TRANSAKSI
+            LEFT JOIN m_barang b ON d.ID_BARANG = b.ID_BARANG
+            LEFT JOIN m_kategori k ON k.ID_KATEGORI = b.ID_KATEGORI
+            WHERE m.`STATUS` = 1 AND TANGGAL_KELUAR BETWEEN :TANGGAL_KELUAR_AWAL AND :TANGGAL_KELUAR_AKHIR";
+    $params = array(
+        ":TANGGAL_KELUAR_AWAL" => $TANGGAL_KELUAR_AWAL,
+        ":TANGGAL_KELUAR_AKHIR" => $TANGGAL_KELUAR_AKHIR
+    );
+    $getPengeluaran = GetQuery2($query, $params);
+}
+
+$kategori = "SELECT ID_KATEGORI,NAMA_KATEGORI FROM m_kategori WHERE STATUS = 1";
+$params = array();
+$getKategori = GetQuery2($kategori, $params);
+
+
+$rowPengeluaran = $getPengeluaran->fetchAll(PDO::FETCH_ASSOC);
+$rowKategori = $getKategori->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
