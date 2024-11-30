@@ -6,7 +6,7 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
         <!-- Page Header -->
         <div class="page-header page-header-block">
             <div class="page-header-section">
-                <h4 class="title semibold">Lihat Data Barang</h4>
+                <h4 class="title semibold">Lihat Data Material</h4>
             </div>
             <div class="page-header-section">
                 <!-- Toolbar -->
@@ -14,8 +14,8 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
                     <ol class="breadcrumb breadcrumb-transparent nm">
                         <li><a href="dashboard.php">Dashboard</a></li>
                         <li >Master</li>
-                        <li><a href="barang.php"> Barang</a></li>
-                        <li class="active">Lihat  Barang</li>
+                        <li><a href="barang.php"> Material</a></li>
+                        <li class="active">Lihat  Material</li>
                     </ol>
                 </div>
                 <!--/ Toolbar -->
@@ -34,15 +34,15 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
                     <form class="form-horizontal form-bordered" action="" method="post" data-parsley-validate>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">ID Barang</label>
+                                <label class="col-sm-2 control-label">Kode Material</label>
                                 <div class="col-sm-5">
                                     <input class="form-control" type="text" name="ID_BARANG" value="<?= $ID_BARANG; ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Nama Barang</label>
+                                <label class="col-sm-2 control-label">Nama Material</label>
                                 <div class="col-sm-5">
-                                    <input class="form-control" type="text" name="NAMA_BARANG" value="<?= $NAMA_BARANG; ?>" readonly>
+                                    <input class="form-control" type="text" name="NAMA_BARANG" value="<?= htmlspecialchars($NAMA_BARANG, ENT_QUOTES, 'UTF-8'); ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -92,7 +92,7 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
         <!-- Page Header -->
         <div class="page-header page-header-block">
             <div class="page-header-section">
-                <h4 class="title semibold">Ubah Data Barang</h4>
+                <h4 class="title semibold">Ubah Data Material</h4>
             </div>
             <div class="page-header-section">
                 <!-- Toolbar -->
@@ -100,8 +100,8 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
                     <ol class="breadcrumb breadcrumb-transparent nm">
                         <li><a href="dashboard.php">Dashboard</a></li>
                         <li >Master</li>
-                        <li><a href="barang.php"> Barang</a></li>
-                        <li class="active">Ubah Barang</li>
+                        <li><a href="barang.php"> Material</a></li>
+                        <li class="active">Ubah Material</li>
                     </ol>
                 </div>
                 <!--/ Toolbar -->
@@ -115,18 +115,24 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Form Barang</h3>
+                        <h3 class="panel-title">Form Material</h3>
                     </div>
                     <form class="form-horizontal form-bordered" action="" method="post" data-parsley-validate>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Nama Barang</label>
+                                <label class="col-sm-2 control-label">Kode Material</label>
                                 <div class="col-sm-5">
-                                    <input class="form-control" type="text" name="NAMA_BARANG" placeholder="Nama Barang" value="<?= $NAMA_BARANG; ?>" data-parsley-error-message="Mohon masukkan nama barang" data-parsley-required>
+                                    <input class="form-control" type="text" name="ID_BARANG" placeholder="Kode Material" value="<?= $ID_BARANG; ?>" data-parsley-error-message="Mohon masukkan kode material" data-parsley-required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Kategori Barang</label>
+                                <label class="col-sm-2 control-label">Nama Material</label>
+                                <div class="col-sm-5">
+                                    <input class="form-control" type="text" name="NAMA_BARANG" placeholder="Nama Material" value="<?= htmlspecialchars($NAMA_BARANG, ENT_QUOTES, 'UTF-8'); ?>" data-parsley-error-message="Mohon masukkan nama barang" data-parsley-required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Kategori Material</label>
                                 <div class="col-sm-5">
                                     <select name="ID_KATEGORI" id="selectize-select" required="" class="form-control" data-parsley-error-message="Mohon pilih kategori barang" data-parsley-required>
                                         <option value="">-- Pilih Kategori --</option>
@@ -187,7 +193,7 @@ else {
         <!-- Page Header -->
         <div class="page-header page-header-block">
             <div class="page-header-section">
-                <h4 class="title semibold">Tambah Data Barang</h4>
+                <h4 class="title semibold">Tambah Data Material</h4>
             </div>
             <div class="page-header-section">
                 <!-- Toolbar -->
@@ -195,8 +201,8 @@ else {
                     <ol class="breadcrumb breadcrumb-transparent nm">
                         <li><a href="dashboard.php">Dashboard</a></li>
                         <li >Master</li>
-                        <li><a href="barang.php"> Barang</a></li>
-                        <li class="active">Tambah Barang</li>
+                        <li><a href="barang.php"> Material</a></li>
+                        <li class="active">Tambah Material</li>
                     </ol>
                 </div>
                 <!--/ Toolbar -->
@@ -210,18 +216,24 @@ else {
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Form Barang</h3>
+                        <h3 class="panel-title">Form Material</h3>
                     </div>
                     <form class="form-horizontal form-bordered" action="" method="post" data-parsley-validate>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Nama Barang</label>
+                                <label class="col-sm-2 control-label">Kode Material</label>
                                 <div class="col-sm-5">
-                                    <input class="form-control" type="text" name="NAMA_BARANG" placeholder="Nama Barang" value="" data-parsley-error-message="Mohon masukkan nama barang" data-parsley-required>
+                                    <input class="form-control" type="text" name="ID_BARANG" placeholder="Kode Material" value="" data-parsley-error-message="Mohon masukkan kode material" data-parsley-required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Kategori Barang</label>
+                                <label class="col-sm-2 control-label">Nama Material</label>
+                                <div class="col-sm-5">
+                                    <input class="form-control" type="text" name="NAMA_BARANG" placeholder="Nama Material" value="" data-parsley-error-message="Mohon masukkan nama barang" data-parsley-required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Kategori Material</label>
                                 <div class="col-sm-5">
                                     <select name="ID_KATEGORI" id="selectize-select" required="" class="form-control" data-parsley-error-message="Mohon pilih kategori barang" data-parsley-required>
                                         <option value="">-- Pilih Kategori --</option>

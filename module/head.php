@@ -1,9 +1,9 @@
 <!-- START META SECTION -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Inventory Management</title>
+<title>Monitoring Material</title>
 <meta name="author" content="optimisticdesigns">
-<meta name="description" content="Inventory Management">
+<meta name="description" content="Monitoring Material">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/image/touch/apple-touch-icon-144x144-precomposed.png">

@@ -37,19 +37,21 @@ sendSuccessResponse(['Barang' => $BARANG]);
  * Fetch Barang details based on category
  */
 function fetchBarang($ID_KATEGORI) {
-    $GetDetails = GetQuery2("SELECT *,CONCAT(RIGHT(YEAR(CURDATE()), 2),CHAR(MONTH(CURDATE()) + 64), SUBSTRING_INDEX(SUBSTRING_INDEX(ID_BARANG, '-', -1), '.', 1),LPAD(RIGHT(ID_BARANG, 3), 3, '0')  ) AS NO_BATCH FROM m_barang WHERE ID_KATEGORI = :ID_KATEGORI ORDER BY NAMA_BARANG", [':ID_KATEGORI' => $ID_KATEGORI]);
+    $BATCH = createBatch('t_pemasukan', 'ID_PEMASUKAN', 3, $ID_KATEGORI);
+    $GetDetails = GetQuery2("SELECT * FROM m_barang WHERE ID_KATEGORI = :ID_KATEGORI ORDER BY NAMA_BARANG", [':ID_KATEGORI' => $ID_KATEGORI]);
     if (!$GetDetails) {
         throw new Exception('Query execution failed');
     }
 
     $details = [];
     while ($row = $GetDetails->fetch(PDO::FETCH_ASSOC)) {
+        // Don't apply htmlspecialchars, return the value directly
         $details[] = [
             'ID_BARANG' => $row['ID_BARANG'],
-            'NAMA_BARANG' => $row['NAMA_BARANG'],
+            'NAMA_BARANG' => $row['ID_BARANG'] . ' - ' . htmlspecialchars($row['NAMA_BARANG'], ENT_QUOTES, 'UTF-8'),
             'SATUAN' => $row['SATUAN'],
-            'NO_BATCH' => $row['NO_BATCH']
-        ];
+            'NO_BATCH' => $BATCH
+        ];        
     }
     $GetDetails->closeCursor();
     return $details;
@@ -66,8 +68,9 @@ function sendSuccessResponse($data) {
             'id' => bin2hex(random_bytes(16))
         ],
         'data' => $data
-    ]);
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 }
+
 
 /**
  * Send error response with message and status code

@@ -60,7 +60,11 @@ $(document).ready(function () {
                 success: function (response) {
                     if (response.result.message === "OK" && response.data && response.data.Barang.length > 0) {
                         response.data.Barang.forEach(function (item) {
-                            idBarang.addOption({ value: item.ID_BARANG, text: item.NAMA_BARANG });
+                            // Convert &quot; into " for correct display in HTML
+                            var namaBarang = item.NAMA_BARANG.replace(/&quot;/g, '"');
+                            
+                            // Add the item to the dropdown
+                            idBarang.addOption({ value: item.ID_BARANG, text: namaBarang });
                         });
                         idBarang.setValue('');
                     } else {
@@ -70,7 +74,7 @@ $(document).ready(function () {
                 error: function (xhr, status, error) {
                     console.error('Error fetching barang data:', status, error);
                 }
-            });
+            });                       
         });
     }
 

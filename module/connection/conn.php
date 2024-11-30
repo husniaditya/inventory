@@ -67,6 +67,36 @@ try {
         return $awalan . '-' . $YEAR . $MONTH . '-' . $idKategori .'.' . str_pad($angkaAkhir, $jumlahAngka, '0', STR_PAD_LEFT);
     }
 
+    function createBatch($namaTabel, $namaKolom, $jumlahAngka, $idKategori)
+    {
+        global $db1, $YEAR, $MONTH;
+
+        $YEARFORMAT = date("Y");
+        // Get the current month as a numeric value (1 = January, 2 = February, etc.)
+        $monthNumber = date("n");
+
+        // Convert the month number to a corresponding letter (A = 1, B = 2, etc.)
+        $MONTHFORMAT = chr(64 + $monthNumber);
+
+        $angkaAkhir = 0;
+        $idKategori = substr($idKategori,-2);
+        
+        // Query to find the maximum existing number for the current year and month
+        $stmt = $db1->query("SELECT MAX(RIGHT($namaKolom, $jumlahAngka)) AS akhir FROM $namaTabel WHERE SUBSTR($namaKolom, 5, 6) = '$YEAR$MONTH'");
+        
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            if (isset($row["akhir"])) {
+                $angkaAkhir = intval($row["akhir"]);
+            }
+        }
+
+        // Increment the number to generate the next code
+        $angkaAkhir = $angkaAkhir + 1;
+        
+        // Format the code with the prefix, year-month, and padded number
+        return $YEARFORMAT . $MONTHFORMAT . $idKategori . str_pad($angkaAkhir, $jumlahAngka, '0', STR_PAD_LEFT);
+    }
+
     function autoInc($namaTabel, $namaKolom, $jumlahAngka)
     {
         global $db1;

@@ -4,7 +4,7 @@
     <!-- Page Header -->
     <div class="page-header page-header-block">
         <div class="page-header-section">
-            <h4 class="title semibold">Master Kategori Barang</h4>
+            <h4 class="title semibold">Master Kategori Material</h4>
         </div>
         <div class="page-header-section">
             <!-- Toolbar -->
@@ -12,7 +12,7 @@
                 <ol class="breadcrumb breadcrumb-transparent nm">
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li >Master</li>
-                    <li class="active">Kategori Barang</li>
+                    <li class="active">Kategori Material</li>
                 </ol>
             </div>
             <!--/ Toolbar -->
@@ -34,7 +34,7 @@
         <div class="col-md-12">
             <div class="panel panel-default" id="demo">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Tabel Master Kategori Barang</h3>
+                    <h3 class="panel-title">Tabel Master Kategori Material</h3>
                 </div>
                 <table class="table table-striped table-bordered" id="kategori-table">
                     <thead>

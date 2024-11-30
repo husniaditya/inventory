@@ -33,7 +33,7 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
             // $this->Image('logo.png', 10, 10, 30); // Example image path
             
             // Title
-            $this->Cell(0, 10, 'Laporan Stok Barang', 0, 1, 'C'); // Centered title
+            $this->Cell(0, 10, 'Laporan Stok Material', 0, 1, 'C'); // Centered title
             
             // Date and time at the right
             $this->SetFont('helvetica', '', 10);
@@ -65,8 +65,8 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
     // Set document information
     $pdf->SetCreator('Your Creator');
     $pdf->SetAuthor('Your Author');
-    $pdf->SetTitle('Laporan Stok Barang');
-    $pdf->SetSubject('Laporan Stok Barang');
+    $pdf->SetTitle('Laporan Stok Material');
+    $pdf->SetSubject('Laporan Stok Material');
 
     // Set default header data (can be overridden in the custom header method)
     $pdf->SetHeaderData('', 0, '', '');
@@ -91,9 +91,9 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
     $pdf->Cell(40, 10, 'ID Transaksi', 1, 0, 'C'); // Add border with alignment
     $pdf->Cell(30, 10, 'Tanggal', 1, 0, 'C'); // Add border with alignment
     $pdf->Cell(40, 10, 'Kategori', 1, 0, 'C'); // Add border with alignment
-    $pdf->Cell(85, 10, 'Barang', 1, 0, 'C'); // Add border with alignment
-    $pdf->Cell(30, 10, 'Debit', 1, 0, 'C'); // Add border with alignment
-    $pdf->Cell(30, 10, 'Kredit', 1, 1, 'C'); // Add border with alignment
+    $pdf->Cell(85, 10, 'Material', 1, 0, 'C'); // Add border with alignment
+    $pdf->Cell(30, 10, 'Masuk', 1, 0, 'C'); // Add border with alignment
+    $pdf->Cell(30, 10, 'Keluar', 1, 1, 'C'); // Add border with alignment
 
     
     $getBatch = "SELECT b.ID_KATEGORI,b.ID_BARANG, b.NAMA_BARANG, d.NO_BATCH 
@@ -184,7 +184,7 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
 
         foreach ($getSaldo as $dataSaldo) {
             extract($dataSaldo);
-            $pdf->Cell(215, 10, 'SALDO AWAL', 1, 0, 'R'); // Add border with alignment
+            $pdf->Cell(215, 10, 'BALANCE', 1, 0, 'R'); // Add border with alignment
             $pdf->Cell(30, 10, $SALDO_AWAL_DEBIT, 1, 0, 'R');
             $pdf->Cell(30, 10, $SALDO_AWAL_KREDIT, 1, 0, 'R');
         }
@@ -210,7 +210,7 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
 
         foreach ($getSaldoAkhir as $dataSaldoAkhir) {
             extract($dataSaldoAkhir);
-            $pdf->Cell(215, 10, 'SALDO AKHIR', 1, 0, 'R'); // Add border with alignment
+            $pdf->Cell(215, 10, 'BALANCE', 1, 0, 'R'); // Add border with alignment
             $pdf->Cell(30, 10, $SALDO_AKHIR_DEBIT, 1, 0, 'R');
             $pdf->Cell(30, 10, $SALDO_AKHIR_KREDIT, 1, 0, 'R');
         }

@@ -149,8 +149,8 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
                                 <div class="col-sm-5">
                                     <select name="AKSES" id="selectize-select" class="form-control" data-parsley-error-message="Mohon pilih akses pengguna" data-parsley-required>
                                         <option value="">-- Pilih Akses --</option>
+                                        <option value="Pegawai Gudang" <?php if ($AKSES == "Pegawai Gudang") echo "selected"; ?>>Pegawai Gudang</option>
                                         <option value="Admin" <?php if ($AKSES == "Admin") echo "selected"; ?>>Admin</option>
-                                        <option value="KTU" <?php if ($AKSES == "KTU") echo "selected"; ?>>KTU</option>
                                         <option value="Manager" <?php if ($AKSES == "Manager") echo "selected"; ?>>Manager</option>
                                     </select>
                                 </div>
@@ -245,8 +245,8 @@ else {
                                 <div class="col-sm-5">
                                     <select name="AKSES" id="selectize-select" class="form-control" data-parsley-error-message="Mohon pilih akses pengguna" data-parsley-required>
                                         <option value="">-- Pilih Akses --</option>
+                                        <option value="Pegawai Gudang">Pegawai Gudang</option>
                                         <option value="Admin">Admin</option>
-                                        <option value="KTU">KTU</option>
                                         <option value="Manager">Manager</option>
                                     </select>
                                 </div>

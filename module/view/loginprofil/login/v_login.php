@@ -7,7 +7,7 @@
             <!-- Brand -->
             <div class="text-center" style="margin-bottom:40px;">
                 <span class="logo-figure inverse"></span>
-                <h3 class="semibold text-muted mt-5">Management Inventory</h3>
+                <h3 class="semibold text-muted mt-5">Monitoring Material</h3>
             </div>
             <!--/ Brand -->
 

@@ -54,7 +54,7 @@ foreach ($rowPemasukan as $row) {
         'NOMOR_PO' => $row["NOMOR_PO"],
         'TANGGAL_MASUK' => $row["TANGGAL_MASUK"],
         'ID_BARANG' => $row["ID_BARANG"],
-        'NAMA_BARANG' => $row["NAMA_BARANG"],
+        'NAMA_BARANG' => $row["ID_BARANG"] . ' - ' . $row["NAMA_BARANG"],
         'NAMA_KATEGORI' => $row["NAMA_KATEGORI"],
         'NO_BATCH' => $row["NO_BATCH"],
         'QTY' => $row["QTY"],

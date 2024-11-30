@@ -6,7 +6,7 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
         <!-- Page Header -->
         <div class="page-header page-header-block">
             <div class="page-header-section">
-                <h4 class="title semibold">Lihat Pemasukan Barang</h4>
+                <h4 class="title semibold">Lihat Pemasukan Material</h4>
             </div>
             <div class="page-header-section">
                 <!-- Toolbar -->
@@ -14,8 +14,8 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
                     <ol class="breadcrumb breadcrumb-transparent nm">
                         <li><a href="dashboard.php">Dashboard</a></li>
                         <li >Master</li>
-                        <li><a href="pemasukan.php"> Pemasukan Barang</a></li>
-                        <li class="active">Lihat Pemasukan Barang</li>
+                        <li><a href="pemasukan.php"> Pemasukan Material</a></li>
+                        <li class="active">Lihat Pemasukan Material</li>
                     </ol>
                 </div>
                 <!--/ Toolbar -->
@@ -60,18 +60,18 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
                             </div>
                         </div>
                         <div class="panel-heading">
-                            <h3 class="panel-title">Form Barang</h3>
+                            <h3 class="panel-title">Form Material</h3>
                         </div>
                         <hr>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Kategori Barang</label>
+                                <label class="col-sm-2 control-label">Kategori Material</label>
                                 <div class="col-sm-5">
                                 <input class="form-control" type="text" name="ID_KATEGORI" id="ID_KATEGORI" value="" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label"> Barang</label>
+                                <label class="col-sm-2 control-label"> Material</label>
                                 <div class="col-sm-5">
                                     <input class="form-control" type="text" name="ID_BARANG" id="ID_BARANG" value="" readonly>
                                 </div>
@@ -125,7 +125,7 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
     <?php
 }
 elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
-    if ($_SESSION["LOGINAKS_INV"] != "KTU") {
+    if ($_SESSION["LOGINAKS_INV"] != "Admin") {
         ?><script>alert('Anda tidak memiliki akses ke halaman ini');</script><?php
         ?><script>document.location.href='pemasukan.php';</script><?php
         die(0);
@@ -136,16 +136,16 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
         <!-- Page Header -->
         <div class="page-header page-header-block">
             <div class="page-header-section">
-                <h4 class="title semibold">Tambah Pemasukan Barang</h4>
+                <h4 class="title semibold">Tambah Pemasukan Material</h4>
             </div>
             <div class="page-header-section">
                 <!-- Toolbar -->
                 <div class="toolbar">
                     <ol class="breadcrumb breadcrumb-transparent nm">
                         <li><a href="dashboard.php">Dashboard</a></li>
-                        <li >Master</li>
-                        <li><a href="pemasukan.php"> Pemasukan Barang</a></li>
-                        <li class="active">Tambah Pemasukan Barang</li>
+                        <li >Transaksi</li>
+                        <li><a href="pemasukan.php"> Pemasukan Material</a></li>
+                        <li class="active">Tambah Pemasukan Material</li>
                     </ol>
                 </div>
                 <!--/ Toolbar -->
@@ -184,12 +184,12 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
                             </div>
                         </div>
                         <div class="panel-heading">
-                            <h3 class="panel-title">Form Barang</h3>
+                            <h3 class="panel-title">Form Material</h3>
                         </div>
                         <hr>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Kategori Barang</label>
+                                <label class="col-sm-2 control-label">Kategori Material</label>
                                 <div class="col-sm-5">
                                     <select name="ID_KATEGORI" id="selectize-select" class="form-control" data-parsley-required>
                                         <option value="">-- Pilih Kategori --</option>
@@ -205,10 +205,10 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label"> Barang</label>
+                                <label class="col-sm-2 control-label"> Material</label>
                                 <div class="col-sm-5">
                                     <select name="ID_BARANG" id="selectize-select2" class="form-control" data-parsley-required>
-                                        <option value="">-- Pilih Barang --</option>
+                                        <option value="">-- Pilih Material --</option>
                                     </select>
                                 </div>
                             </div>
@@ -268,7 +268,7 @@ else {
         <!-- Page Header -->
         <div class="page-header page-header-block">
             <div class="page-header-section">
-                <h4 class="title semibold">Tambah Pemasukan Barang</h4>
+                <h4 class="title semibold">Tambah Pemasukan Material</h4>
             </div>
             <div class="page-header-section">
                 <!-- Toolbar -->
@@ -276,8 +276,8 @@ else {
                     <ol class="breadcrumb breadcrumb-transparent nm">
                         <li><a href="dashboard.php">Dashboard</a></li>
                         <li >Master</li>
-                        <li><a href="pemasukan.php"> Pemasukan Barang</a></li>
-                        <li class="active">Tambah Pemasukan Barang</li>
+                        <li><a href="pemasukan.php"> Pemasukan Material</a></li>
+                        <li class="active">Tambah Pemasukan Material</li>
                     </ol>
                 </div>
                 <!--/ Toolbar -->
@@ -316,12 +316,12 @@ else {
                             </div>
                         </div>
                         <div class="panel-heading">
-                            <h3 class="panel-title">Form Barang</h3>
+                            <h3 class="panel-title">Form Material</h3>
                         </div>
                         <hr>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Kategori Barang</label>
+                                <label class="col-sm-2 control-label">Kategori Material</label>
                                 <div class="col-sm-5">
                                     <select name="ID_KATEGORI" id="selectize-select" class="form-control" data-parsley-required>
                                         <option value="">-- Pilih Kategori --</option>
@@ -337,10 +337,10 @@ else {
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label"> Barang</label>
+                                <label class="col-sm-2 control-label"> Material</label>
                                 <div class="col-sm-5">
                                     <select name="ID_BARANG" id="selectize-select2" class="form-control" data-parsley-required>
-                                        <option value="">-- Pilih Barang --</option>
+                                        <option value="">-- Pilih Material --</option>
                                     </select>
                                 </div>
                             </div>

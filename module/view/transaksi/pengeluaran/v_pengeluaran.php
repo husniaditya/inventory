@@ -4,7 +4,7 @@
     <!-- Page Header -->
     <div class="page-header page-header-block">
         <div class="page-header-section">
-            <h4 class="title semibold">Transaksi Pengeluaran Barang</h4>
+            <h4 class="title semibold">Transaksi Pengeluaran Material</h4>
         </div>
         <div class="page-header-section">
             <!-- Toolbar -->
@@ -12,7 +12,7 @@
                 <ol class="breadcrumb breadcrumb-transparent nm">
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li >Transaksi</li>
-                    <li class="active"> Pengeluaran Barang</li>
+                    <li class="active"> Pengeluaran Material</li>
                 </ol>
             </div>
             <!--/ Toolbar -->
@@ -23,7 +23,7 @@
     <!-- START row -->
     <div class="row">
         <div class="col-lg-12">
-            <a href="pengeluaran_transaksi.php" class="open-AddTingkatGelar btn btn-inverse btn-outline mb5 btn-rounded" ><i class="ico-plus2"></i> Tambah Pengeluaran Barang</a>
+            <a href="pengeluaran_transaksi.php" class="open-AddTingkatGelar btn btn-inverse btn-outline mb5 btn-rounded" ><i class="ico-plus2"></i> Tambah Pengeluaran Material</a>
         </div>
     </div>
     <br>
@@ -34,15 +34,15 @@
         <div class="col-md-12">
             <div class="panel panel-default" id="demo">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Tabel Pengeluaran Barang</h3>
+                    <h3 class="panel-title">Tabel Pengeluaran Material</h3>
                 </div>
                 <table class="table table-striped table-bordered" id="pengeluaran-table">
                     <thead>
                         <tr>
                             <th>ID Pemasukan</th>
                             <th>Tanggal</th>
-                            <th>ID Barang</th>
-                            <th>Nama Barang</th>
+                            <th>ID Material</th>
+                            <th>Nama Material</th>
                             <th>Kategori</th>
                             <th>No Batch</th>
                             <th>QTY</th>

@@ -4,7 +4,7 @@
     <!-- Page Header -->
     <div class="page-header page-header-block">
         <div class="page-header-section">
-            <h4 class="title semibold">Master Barang</h4>
+            <h4 class="title semibold">Master Material</h4>
         </div>
         <div class="page-header-section">
             <!-- Toolbar -->
@@ -12,7 +12,7 @@
                 <ol class="breadcrumb breadcrumb-transparent nm">
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li >Master</li>
-                    <li class="active"> Barang</li>
+                    <li class="active"> Material</li>
                 </ol>
             </div>
             <!--/ Toolbar -->
@@ -23,7 +23,7 @@
     <!-- START row -->
     <div class="row">
         <div class="col-lg-12">
-            <a href="barang_transaksi.php" class="open-AddTingkatGelar btn btn-inverse btn-outline mb5 btn-rounded" ><i class="ico-plus2"></i> Tambah Data Barang</a>
+            <a href="barang_transaksi.php" class="open-AddTingkatGelar btn btn-inverse btn-outline mb5 btn-rounded" ><i class="ico-plus2"></i> Tambah Data Material</a>
         </div>
     </div>
     <br>
@@ -34,16 +34,16 @@
         <div class="col-md-12">
             <div class="panel panel-default" id="demo">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Tabel Master Barang</h3>
+                    <h3 class="panel-title">Tabel Master Material</h3>
                 </div>
                 <table class="table table-striped table-bordered" id="barang-table">
                     <thead>
                         <tr>
-                            <th>ID Barang</th>
+                            <th>Kode Material</th>
                             <th>Kategori</th>
-                            <th>Nama Barang</th>
-                            <th>Deskripsi</th>
+                            <th>Nama Material</th>
                             <th>Satuan</th>
+                            <th>Deskripsi</th>
                             <th>Status</th>
                             <th>Dibuat Oleh</th>
                             <th>Dibuat Tanggal</th>
@@ -61,8 +61,8 @@
                                 <td align="center"><?= $ID_BARANG; ?></td>
                                 <td align="center"><?= $NAMA_KATEGORI; ?></td>
                                 <td align="center"><?= $NAMA_BARANG; ?></td>
-                                <td><?= $DESKRIPSI; ?></td>
                                 <td align="center"><?= $SATUAN; ?></td>
+                                <td align="center"><?= $DESKRIPSI; ?></td>
                                 <td align="center"><?= $STATUS_DETAIL; ?></td>
                                 <td align="center"><?= $CREATED_BY; ?></td>
                                 <td align="center"><?= $CREATED_DATE; ?></td>

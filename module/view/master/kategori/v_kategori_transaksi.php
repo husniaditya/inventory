@@ -6,7 +6,7 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
         <!-- Page Header -->
         <div class="page-header page-header-block">
             <div class="page-header-section">
-                <h4 class="title semibold">Lihat Data Kategori Barang</h4>
+                <h4 class="title semibold">Lihat Data Kategori Material</h4>
             </div>
             <div class="page-header-section">
                 <!-- Toolbar -->
@@ -14,8 +14,8 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
                     <ol class="breadcrumb breadcrumb-transparent nm">
                         <li><a href="dashboard.php">Dashboard</a></li>
                         <li >Master</li>
-                        <li><a href="kategori.php">Kategori Barang</a></li>
-                        <li class="active">Lihat Kategori Barang</li>
+                        <li><a href="kategori.php">Kategori Material</a></li>
+                        <li class="active">Lihat Kategori Material</li>
                     </ol>
                 </div>
                 <!--/ Toolbar -->
@@ -29,7 +29,7 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Form Kategori Barang</h3>
+                        <h3 class="panel-title">Form Kategori Material</h3>
                     </div>
                     <form class="form-horizontal form-bordered" action="" method="post" data-parsley-validate>
                         <div class="panel-body">
@@ -74,7 +74,7 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
         <!-- Page Header -->
         <div class="page-header page-header-block">
             <div class="page-header-section">
-                <h4 class="title semibold">Ubah Data Kategori Barang</h4>
+                <h4 class="title semibold">Ubah Data Kategori Material</h4>
             </div>
             <div class="page-header-section">
                 <!-- Toolbar -->
@@ -82,8 +82,8 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
                     <ol class="breadcrumb breadcrumb-transparent nm">
                         <li><a href="dashboard.php">Dashboard</a></li>
                         <li >Master</li>
-                        <li><a href="kategori.php">Kategori Barang</a></li>
-                        <li class="active">Ubah Kategori Barang</li>
+                        <li><a href="kategori.php">Kategori Material</a></li>
+                        <li class="active">Ubah Kategori Material</li>
                     </ol>
                 </div>
                 <!--/ Toolbar -->
@@ -97,7 +97,7 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Form Kategori Barang</h3>
+                        <h3 class="panel-title">Form Kategori Material</h3>
                     </div>
                     <form class="form-horizontal form-bordered" action="" method="post" data-parsley-validate>
                         <div class="panel-body">
@@ -147,7 +147,7 @@ else {
         <!-- Page Header -->
         <div class="page-header page-header-block">
             <div class="page-header-section">
-                <h4 class="title semibold">Tambah Data Kategori Barang</h4>
+                <h4 class="title semibold">Tambah Data Kategori Material</h4>
             </div>
             <div class="page-header-section">
                 <!-- Toolbar -->
@@ -155,8 +155,8 @@ else {
                     <ol class="breadcrumb breadcrumb-transparent nm">
                         <li><a href="dashboard.php">Dashboard</a></li>
                         <li >Master</li>
-                        <li><a href="kategori.php">Kategori Barang</a></li>
-                        <li class="active">Tambah Kategori Barang</li>
+                        <li><a href="kategori.php">Kategori Material</a></li>
+                        <li class="active">Tambah Kategori Material</li>
                     </ol>
                 </div>
                 <!--/ Toolbar -->
@@ -170,7 +170,7 @@ else {
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Form Kategori Barang</h3>
+                        <h3 class="panel-title">Form Kategori Material</h3>
                     </div>
                     <form class="form-horizontal form-bordered" action="" method="post" data-parsley-validate>
                         <div class="panel-body">

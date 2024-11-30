@@ -8,7 +8,7 @@ if(!isset($_SESSION["LOGINID_INV"]))
     die(0);
 }
 
-if ($_SESSION["LOGINAKS_INV"] != "KTU") {
+if ($_SESSION["LOGINAKS_INV"] != "Admin") {
     ?><script>alert('Anda tidak memiliki akses ke halaman ini');</script><?php
     ?><script>document.location.href='dashboard.php';</script><?php
     die(0);

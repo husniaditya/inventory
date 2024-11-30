@@ -10,7 +10,7 @@
             </a>
         </li>
         <?php
-        if ($_SESSION["LOGINAKS_INV"] == "KTU") {
+        if ($_SESSION["LOGINAKS_INV"] == "Admin") {
             ?>
             <li >
                 <a href="javascript:void(0);" data-toggle="submenu" data-target="#master" data-parent=".topmenu">
@@ -28,12 +28,12 @@
                     </li>
                     <li >
                         <a href="kategori.php">
-                            <span class="text">Kategori Barang</span>
+                            <span class="text">Kategori Material</span>
                         </a>
                     </li>
                     <li >
                         <a href="barang.php">
-                            <span class="text">Barang</span>
+                            <span class="text">Material</span>
                         </a>
                     </li>
                 </ul>
@@ -41,7 +41,7 @@
             </li>
             <?php
         }
-        if ($_SESSION["LOGINAKS_INV"] == "KTU" || $_SESSION["LOGINAKS_INV"] == "Admin") {
+        if ($_SESSION["LOGINAKS_INV"] == "Admin" || $_SESSION["LOGINAKS_INV"] == "Pegawai Gudang") {
             ?>
             <li >
                 <a href="javascript:void(0);" data-toggle="submenu" data-target="#transaksi" data-parent=".topmenu">
@@ -54,12 +54,12 @@
                     <li class="submenu-header ellipsis">Transaksi</li>
                     <li>
                         <a href="pemasukan.php">
-                            <span class="text">Pemasukan Barang</span>
+                            <span class="text">Pemasukan Material</span>
                         </a>
                     </li>
                     <li >
                         <a href="pengeluaran.php">
-                            <span class="text">Pengeluaran Barang</span>
+                            <span class="text">Pengeluaran Material</span>
                         </a>
                     </li>
                 </ul>
@@ -89,7 +89,7 @@
                 </li>
                 <li >
                     <a href="laporanstok.php">
-                        <span class="text">Lapotan Stok</span>
+                        <span class="text">Laporan Stok</span>
                     </a>
                 </li>
             </ul>

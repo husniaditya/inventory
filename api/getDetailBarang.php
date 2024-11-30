@@ -77,9 +77,12 @@ function fetchBarang($ID_BARANG) {
     if ($PARAM == 'pemasukan') {
         $details = [];
         while ($row = $GetDetails->fetch(PDO::FETCH_ASSOC)) {
+            $ID_KATEGORI = $row['ID_KATEGORI'];
+            $BATCH = createBatch('t_pemasukan', 'ID_PEMASUKAN', 3, $ID_KATEGORI);
+
             $details[] = [
                 'SATUAN' => $row['SATUAN'],
-                'NO_BATCH' => $row['NO_BATCH'],
+                'NO_BATCH' => $BATCH,
             ];
         }
     } else {
