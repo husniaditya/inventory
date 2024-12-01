@@ -78,7 +78,7 @@ function fetchBarang($ID_BARANG) {
         $details = [];
         while ($row = $GetDetails->fetch(PDO::FETCH_ASSOC)) {
             $ID_KATEGORI = $row['ID_KATEGORI'];
-            $BATCH = createBatch('t_pemasukan', 'ID_PEMASUKAN', 3, $ID_KATEGORI);
+            $BATCH = createBatch('t_pemasukan', 'ID_PEMASUKAN', 3, $ID_KATEGORI, $TANGGAL);
 
             $details[] = [
                 'SATUAN' => $row['SATUAN'],

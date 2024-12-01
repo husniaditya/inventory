@@ -50,7 +50,7 @@ if (isset($_GET['method']) && $_GET['method'] == 'delete') {
             $QTY = $_POST['QTY'];
             $NO_BATCH = $_POST['NO_BATCH'];
             $KETERANGAN_PERSEDIAAN = $_POST['KETERANGAN_PERSEDIAAN'];
-            if (isset($_POST['EXPIRATION'])) {
+            if ($_POST['EXPIRATION'] != '') {
                 $EXPIRATION = $_POST['EXPIRATION'];
             } else {
                 $EXPIRATION = NULL;

@@ -67,13 +67,13 @@ try {
         return $awalan . '-' . $YEAR . $MONTH . '-' . $idKategori .'.' . str_pad($angkaAkhir, $jumlahAngka, '0', STR_PAD_LEFT);
     }
 
-    function createBatch($namaTabel, $namaKolom, $jumlahAngka, $idKategori)
+    function createBatch($namaTabel, $namaKolom, $jumlahAngka, $idKategori, $tanggal)
     {
         global $db1, $YEAR, $MONTH;
 
-        $YEARFORMAT = date("Y");
+        $YEARFORMAT = date("Y", strtotime($tanggal));
         // Get the current month as a numeric value (1 = January, 2 = February, etc.)
-        $monthNumber = date("n");
+        $monthNumber = date("n", strtotime($tanggal));
 
         // Convert the month number to a corresponding letter (A = 1, B = 2, etc.)
         $MONTHFORMAT = chr(64 + $monthNumber);

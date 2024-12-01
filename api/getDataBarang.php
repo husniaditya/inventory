@@ -15,6 +15,7 @@ $inputData = json_decode(file_get_contents("php://input"), true);
 
 // Extract input data
 $ID_KATEGORI = $inputData["id"] ?? null;
+$TANGGAL = $inputData["tanggal"] ?? null;
 
 // Validate if necessary data is provided
 if (empty($ID_KATEGORI)) {
@@ -37,7 +38,8 @@ sendSuccessResponse(['Barang' => $BARANG]);
  * Fetch Barang details based on category
  */
 function fetchBarang($ID_KATEGORI) {
-    $BATCH = createBatch('t_pemasukan', 'ID_PEMASUKAN', 3, $ID_KATEGORI);
+    global $TANGGAL;
+    $BATCH = createBatch('t_pemasukan', 'ID_PEMASUKAN', 3, $ID_KATEGORI, $TANGGAL);
     $GetDetails = GetQuery2("SELECT * FROM m_barang WHERE ID_KATEGORI = :ID_KATEGORI ORDER BY NAMA_BARANG", [':ID_KATEGORI' => $ID_KATEGORI]);
     if (!$GetDetails) {
         throw new Exception('Query execution failed');

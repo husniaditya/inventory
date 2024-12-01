@@ -26,19 +26,31 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
         // Page header
         public function Header() {
             global $DATEA, $DATEB;
-            // Select font
-            $this->SetFont('helvetica', 'BU', 18);
-            
-            // Add a logo (optional)
-            // $this->Image('logo.png', 10, 10, 30); // Example image path
-            
+        
             // Title
+            $this->SetFont('helvetica', 'BU', 18);
             $this->Cell(0, 10, 'Laporan Stok Material', 0, 1, 'C'); // Centered title
-            
-            // Date and time at the right
+        
+            // Date range
             $this->SetFont('helvetica', '', 10);
-            $this->Cell(0, 10, 'Periode: ' . $DATEA . ' s.d ' . $DATEB, 0, 1, 'R'); // Right aligned date
-        }
+            $this->Cell(0, 10, 'Periode: ' . $DATEA . ' s.d ' . $DATEB, 0, 1, 'R'); // Right-aligned date
+        
+            // Line break to separate header content
+            $this->Ln(5); // Reduce spacing if necessary
+        
+            // Table Header
+            $this->SetFont('helvetica', 'B', 12); // Bold header
+            $this->Cell(10, 10, 'No.', 1, 0, 'C'); 
+            $this->Cell(30, 10, 'ID Transaksi', 1, 0, 'C');
+            $this->Cell(20, 10, 'Tanggal', 1, 0, 'C');
+            $this->Cell(40, 10, 'Kategori', 1, 0, 'C');
+            $this->Cell(115, 10, 'Material', 1, 0, 'C');
+            $this->Cell(30, 10, 'Masuk', 1, 0, 'C');
+            $this->Cell(30, 10, 'Keluar', 1, 1, 'C'); // Move to the next line
+        
+            // Additional small line break
+            $this->Ln(10); // Fine-tune the spacing here
+        }                       
 
         // Page footer
         public function Footer() {
@@ -72,7 +84,7 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
     $pdf->SetHeaderData('', 0, '', '');
 
     // Set margins
-    $pdf->SetMargins(10, 30, 10); // Left, top, right margins
+    $pdf->SetMargins(10, 40, 10); // Left, top, right margins
     $pdf->SetHeaderMargin(5); // Header margin
     $pdf->SetFooterMargin(10); // Footer margin
 
@@ -81,20 +93,6 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
 
     // Add a page
     $pdf->AddPage('L');
-
-    // Content of the page
-    $pdf->SetFont('helvetica', '', 12);
-
-    // Table Header - Set fonts and alignment
-    $pdf->SetFont('helvetica', 'B', 12); // Bold header
-    $pdf->Cell(20, 10, 'No.', 1, 0, 'C'); // Add border with alignment
-    $pdf->Cell(40, 10, 'ID Transaksi', 1, 0, 'C'); // Add border with alignment
-    $pdf->Cell(30, 10, 'Tanggal', 1, 0, 'C'); // Add border with alignment
-    $pdf->Cell(40, 10, 'Kategori', 1, 0, 'C'); // Add border with alignment
-    $pdf->Cell(85, 10, 'Material', 1, 0, 'C'); // Add border with alignment
-    $pdf->Cell(30, 10, 'Masuk', 1, 0, 'C'); // Add border with alignment
-    $pdf->Cell(30, 10, 'Keluar', 1, 1, 'C'); // Add border with alignment
-
     
     $getBatch = "SELECT 
         b.ID_KATEGORI,
@@ -209,11 +207,12 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
 
         foreach ($getBarang as $dataBarang) {
             extract($dataBarang);
-            $pdf->Cell(20, 10, $rowNumber.'.', 1, 0, 'C'); // Add border with alignment
-            $pdf->Cell(40, 10, $ID_TRANSAKSI, 1, 0, 'C'); // Add border with alignment
-            $pdf->Cell(30, 10, $TANGGAL, 1, 0, 'C'); // Add border with alignment
+            $pdf->Cell(10, 10, $rowNumber.'.', 1, 0, 'C'); // Add border with alignment
+            $pdf->Cell(30, 10, $ID_TRANSAKSI, 1, 0, 'C'); // Add border with alignment
+            $pdf->Cell(20, 10, $TANGGAL, 1, 0, 'C'); // Add border with alignment
             $pdf->Cell(40, 10, $NAMA_KATEGORI, 1, 0, 'C'); // Add border with alignment
-            $pdf->Cell(85, 10, $NAMA_BARANG, 1, 0, 'L'); // Add border with alignment
+            // $pdf->MultiCell(85, 10, $NAMA_BARANG, 1, 'L', false, 0);
+            $pdf->MultiCell(115, 10, $NAMA_BARANG, 1, 'L', 0, 0, '', '', true, 0, false, true, 10, 'M');
             $pdf->Cell(30, 10, $Debit, 1, 0, 'R'); // Add border with alignment
             $pdf->Cell(30, 10, $Kredit, 1, 1, 'R'); // Add border with alignment
 

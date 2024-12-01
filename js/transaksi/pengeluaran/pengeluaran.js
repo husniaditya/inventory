@@ -23,13 +23,15 @@ $(document).ready(function () {
         batchSelectize = $('#selectize-select3').selectize();
         noBatch = batchSelectize[0].selectize;
         
+        let tanggal = $("#datepicker52").val();
+        
         kategori.on('change', function (kategori) {
             idBarang.clearOptions();
             noBatch.clearOptions();
             $.ajax({
                 url: 'api/getDataBarang.php',
                 method: 'POST',
-                data: JSON.stringify({ id: kategori }), // Use the correct key
+                data: JSON.stringify({ id: kategori, tanggal: tanggal }), // Use the correct key
                 contentType: 'application/json',
                 dataType: 'json',
                 success: function (response) {
@@ -59,6 +61,8 @@ $(document).ready(function () {
         
         batchSelectize = $('#selectize-select3').selectize();
         noBatch = batchSelectize[0].selectize;
+        
+        let tanggal = $("#datepicker52").val();
     
         let barangData = []; // To store the fetched barang data
         var param = 'pengeluaran';
@@ -68,7 +72,7 @@ $(document).ready(function () {
             $.ajax({
                 url: 'api/getDetailBarang.php',
                 method: 'POST',
-                data: JSON.stringify({ id: idBarang, param: param, url: psd }), // Use the correct key
+                data: JSON.stringify({ id: idBarang, param: param, url: psd, tanggal : tanggal }), // Use the correct key
                 contentType: 'application/json',
                 dataType: 'json',
                 success: function (response) {

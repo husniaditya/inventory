@@ -50,11 +50,12 @@ $(document).ready(function () {
             idBarang.clearOptions();
             $("#SATUAN").val('');
             $("#NO_BATCH").val('');
+            let tanggal = $("#datepicker52").val();
 
             $.ajax({
                 url: 'api/getDataBarang.php',
                 method: 'POST',
-                data: JSON.stringify({ id: kategori }), // Use the correct key
+                data: JSON.stringify({ id: kategori, tanggal: tanggal }), // Use the correct key
                 contentType: 'application/json',
                 dataType: 'json',
                 success: function (response) {
