@@ -98,11 +98,14 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
     
     $getBatch = "SELECT 
         b.ID_KATEGORI,
+        g.NAMA_KATEGORI,
         b.ID_BARANG,
         b.NAMA_BARANG,
         COALESCE(d.NO_BATCH, '-') AS NO_BATCH
     FROM 
         m_barang b
+    LEFT JOIN
+        m_kategori g on b.ID_KATEGORI = g.ID_KATEGORI
     LEFT JOIN 
         t_persediaan d ON b.ID_BARANG = d.ID_BARANG
     LEFT JOIN 
@@ -230,6 +233,6 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
     }
 
     // Output the PDF to browser
-    $pdf->Output('example.pdf', 'I');
+    $pdf->Output('Laporan Stok ' . $NAMA_KATEGORI . ' ' . $DATEA . ' s.d ' . $DATEB . '.pdf', 'I');
 }
 ?>

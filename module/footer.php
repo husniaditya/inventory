@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-6">
             <!-- copyright -->
-            <p class="nm text-muted">&copy; Inventory Management 2024. All Rights Reserved.</p>
+            <p class="nm text-muted">&copy; Monitoring Material 2024. All Rights Reserved.</p>
             <!--/ copyright -->
         </div>
     </div>
