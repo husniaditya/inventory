@@ -96,20 +96,31 @@ if (isset($_GET['DATEA']) && isset($_GET['DATEB']) && isset($_GET['ID_KATEGORI']
     $pdf->Cell(30, 10, 'Keluar', 1, 1, 'C'); // Add border with alignment
 
     
-    $getBatch = "SELECT b.ID_KATEGORI,b.ID_BARANG, b.NAMA_BARANG, d.NO_BATCH 
-    FROM t_persediaan d
-    LEFT JOIN t_pemasukan m ON d.ID_TRANSAKSI = m.ID_PEMASUKAN AND m.TANGGAL_MASUK BETWEEN :DATEA AND :DATEB AND m.STATUS = 1
-    LEFT JOIN t_pengeluaran k ON d.ID_TRANSAKSI = k.ID_PENGELUARAN AND k.TANGGAL_KELUAR BETWEEN :DATEA AND :DATEB AND k.STATUS = 1
-    LEFT JOIN m_barang b ON d.ID_BARANG = b.ID_BARANG
-    WHERE b.ID_KATEGORI LIKE :ID_KATEGORI AND d.ID_BARANG LIKE :ID_BARANG  AND d.STATUS = 1 AND d.NO_BATCH LIKE :NO_BATCH 
-    GROUP BY b.ID_BARANG, d.NO_BATCH
-    ORDER BY b.ID_BARANG, d.NO_BATCH";
+    $getBatch = "SELECT 
+        b.ID_KATEGORI,
+        b.ID_BARANG,
+        b.NAMA_BARANG,
+        COALESCE(d.NO_BATCH, '-') AS NO_BATCH
+    FROM 
+        m_barang b
+    LEFT JOIN 
+        t_persediaan d ON b.ID_BARANG = d.ID_BARANG
+    LEFT JOIN 
+        t_pemasukan m ON d.ID_TRANSAKSI = m.ID_PEMASUKAN
+    LEFT JOIN 
+        t_pengeluaran k ON d.ID_TRANSAKSI = k.ID_PENGELUARAN
+    WHERE 
+        b.ID_KATEGORI LIKE :ID_KATEGORI 
+        AND b.ID_BARANG LIKE :ID_BARANG
+        AND (d.NO_BATCH LIKE :NO_BATCH OR d.NO_BATCH IS NULL)
+    GROUP BY 
+        b.ID_BARANG, d.NO_BATCH
+    ORDER BY 
+        b.ID_BARANG, d.NO_BATCH";
     $paramsBatch = array(
-        ":ID_KATEGORI" => "%" . $ID_KATEGORI . "%",
-        ":ID_BARANG" => "%" . $ID_BARANG . "%",
-        ":NO_BATCH" => "%" . $NO_BATCH . "%",
-        ":DATEA" => $DATEA,
-        ":DATEB" => $DATEB
+        ":ID_KATEGORI" => '%' . $ID_KATEGORI . '%',
+        ":ID_BARANG" => '%' . $ID_BARANG . '%',
+        ":NO_BATCH" => '%' . $NO_BATCH . '%'
     );
     $getBatch = GetQuery2($getBatch, $paramsBatch);
 
