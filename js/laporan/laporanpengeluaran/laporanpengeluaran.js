@@ -25,13 +25,15 @@ $(document).ready(function () {
         batchSelectize = $('#selectize-select3').selectize();
         noBatch = batchSelectize[0].selectize;
         
+        let tanggal = $("#datepicker11").val();
+        
         kategori.on('change', function (kategori) {
             idBarang.clearOptions();
             noBatch.clearOptions();
             $.ajax({
                 url: 'api/getDataBarang.php',
                 method: 'POST',
-                data: JSON.stringify({ id: kategori }), // Use the correct key
+                data: JSON.stringify({ id: kategori, tanggal: tanggal }), // Use the correct key
                 contentType: 'application/json',
                 dataType: 'json',
                 success: function (response) {

@@ -26,7 +26,7 @@ if (isset($_GET['id']) && $_GET['method'] == 'view') {
         <form class="form-horizontal form-bordered" action="" method="post" data-parsley-validate>
         <!-- START row -->
             <div class="row">
-                <!-- make a input form for kategori barang -->x
+                <!-- make a input form for kategori barang -->
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -156,7 +156,7 @@ elseif (isset($_GET['id']) && $_GET['method'] == 'edit') {
         <form class="form-horizontal form-bordered" action="" method="post" data-parsley-validate>
         <!-- START row -->
             <div class="row">
-                <!-- make a input form for kategori barang -->x
+                <!-- make a input form for kategori barang -->
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -288,7 +288,7 @@ else {
         <form class="form-horizontal form-bordered" action="" method="post" data-parsley-validate>
         <!-- START row -->
             <div class="row">
-                <!-- make a input form for kategori barang -->x
+                <!-- make a input form for kategori barang -->
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">

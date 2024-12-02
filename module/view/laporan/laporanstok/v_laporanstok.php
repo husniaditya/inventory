@@ -4,7 +4,7 @@
     <!-- Page Header -->
     <div class="page-header page-header-block">
         <div class="page-header-section">
-            <h4 class="title semibold">Laporan Stok Barang</h4>
+            <h4 class="title semibold">Laporan Stok Material</h4>
         </div>
         <div class="page-header-section">
             <!-- Toolbar -->
@@ -12,7 +12,7 @@
                 <ol class="breadcrumb breadcrumb-transparent nm">
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li >Laporan</li>
-                    <li class="active"> Laporan Stok Barang</li>
+                    <li class="active"> Laporan Stok Material</li>
                 </ol>
             </div>
             <!--/ Toolbar -->
@@ -26,20 +26,20 @@
             <div class="mb-4 col-md-3 col-12">
                 <div class="form-group">
                     <label class="control-label"> Tanggal Periode</label>
-                    <input type="text" class="form-control" id="datepicker11" name="DATEA" value="" readonly data-parsley-required />
+                    <input type="text" class="form-control" id="datepicker52" name="DATEA" value="" readonly data-parsley-required />
                 </div> 
             </div>
             <div class="mb-4 col-md-3 col-12">
                 <div class="form-group">
                     <label class="col-form-label" style="color: transparent;">.</label>
-                    <input type="text" class="form-control" id="datepicker12" name="DATEB" value="" readonly data-parsley-required />
+                    <input type="text" class="form-control" id="datepicker62" name="DATEB" value="" readonly data-parsley-required />
                 </div>  
             </div>
         </div>
         <div class="row">
             <div class="mb-4 col-md-3 col-12">
                 <div class="form-group">
-                    <label class="control-label">Kategori Barang</label>
+                    <label class="control-label">Kategori Material</label>
                     <select name="ID_KATEGORI" id="selectize-select" class="form-control" >
                         <option value="">-- Pilih Kategori --</option>
                         <?php
@@ -55,9 +55,9 @@
             </div>
             <div class="mb-4 col-md-3 col-12">
                 <div class="form-group">
-                    <label class="control-label"> Barang</label>
+                    <label class="control-label"> Material</label>
                     <select name="ID_BARANG" id="selectize-select2" class="form-control" >
-                        <option value="">-- Pilih Barang --</option>
+                        <option value="">-- Pilih Material --</option>
                     </select>
                 </div>  
             </div>

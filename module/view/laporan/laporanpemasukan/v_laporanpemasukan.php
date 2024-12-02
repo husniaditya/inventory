@@ -4,7 +4,7 @@
     <!-- Page Header -->
     <div class="page-header page-header-block">
         <div class="page-header-section">
-            <h4 class="title semibold">Laporan Pemasukan Barang</h4>
+            <h4 class="title semibold">Laporan Pemasukan Material</h4>
         </div>
         <div class="page-header-section">
             <!-- Toolbar -->
@@ -12,7 +12,7 @@
                 <ol class="breadcrumb breadcrumb-transparent nm">
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li >Laporan</li>
-                    <li class="active"> Laporan Pemasukan Barang</li>
+                    <li class="active"> Laporan Pemasukan Material</li>
                 </ol>
             </div>
             <!--/ Toolbar -->
@@ -51,7 +51,7 @@
         <div class="row">
             <div class="mb-4 col-md-3 col-12">
                 <div class="form-group">
-                    <label class="control-label">Kategori Barang</label>
+                    <label class="control-label">Kategori Material</label>
                     <select name="ID_KATEGORI" id="selectize-select" class="form-control" >
                         <option value="">-- Pilih Kategori --</option>
                         <?php
@@ -67,9 +67,9 @@
             </div>
             <div class="mb-4 col-md-3 col-12">
                 <div class="form-group">
-                    <label class="control-label"> Barang</label>
+                    <label class="control-label"> Material</label>
                     <select name="ID_BARANG" id="selectize-select2" class="form-control" >
-                        <option value="">-- Pilih Barang --</option>
+                        <option value="">-- Pilih Material --</option>
                         <?php
                         if (isset($_POST['cari'])) {
                             foreach ($rowBarang as $dataBarang) {
@@ -128,15 +128,15 @@
         <div class="col-md-12">
             <div class="panel panel-default" id="demo">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Tabel Laporan Pemasukan Barang</h3>
+                    <h3 class="panel-title">Tabel Laporan Pemasukan Material</h3>
                 </div>
                 <table class="table table-striped table-bordered" id="laporanpemasukan-table">
                     <thead>
                         <tr>
                             <th>ID Pemasukan</th>
                             <th>Tanggal</th>
-                            <th>ID Barang</th>
-                            <th>Nama Barang</th>
+                            <th>Kode Material</th>
+                            <th>Nama Material</th>
                             <th>Kategori</th>
                             <th>No Batch</th>
                             <th>QTY</th>
