@@ -36,7 +36,7 @@ if (isset($_GET['method']) && $_GET['method'] == 'delete') {
         $query = "SELECT b.*,CASE WHEN b.STATUS = 1 THEN 'Aktif' ELSE 'Tidak Aktif' END STATUS_DETAIL,k.NAMA_KATEGORI, b.ID_KATEGORI ID_KATEGORI_EDIT
             FROM m_barang b 
             LEFT JOIN m_kategori k ON b.ID_KATEGORI = k.ID_KATEGORI
-            WHERE b.STATUS = 1 AND b.ID_BARANG = :ID_BARANG";
+            WHERE b.ID_BARANG = :ID_BARANG";
         $params = array(':ID_BARANG' => $ID_BARANG_GET);
         $getBarang = GetQuery2($query, $params);
         $rowBarang = $getBarang->fetchAll(PDO::FETCH_ASSOC);
