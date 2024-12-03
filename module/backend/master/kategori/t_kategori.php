@@ -21,7 +21,7 @@ if (isset($_GET['method']) && $_GET['method'] == 'delete') {
     $NAMA_KATEGORI = "";
     $DESKRIPSI = "";
 
-    $query = "SELECT *,CASE WHEN STATUS = 1 THEN 'Aktif' ELSE 'Tidak Aktif' END STATUS_DETAIL FROM m_kategori WHERE STATUS = 1";
+    $query = "SELECT *,CASE WHEN STATUS = 1 THEN 'Aktif' ELSE 'Tidak Aktif' END STATUS_DETAIL FROM m_kategori";
     $params = array();
     $getKategori = GetQuery2($query, $params);
     $rowKategori = $getKategori->fetchAll(PDO::FETCH_ASSOC);
