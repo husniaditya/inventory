@@ -55,15 +55,15 @@ if (isset($_GET['method']) && $_GET['method'] == 'delete') {
             $STATUS = $_POST['STATUS'];
 
             // Update Query
-            $query = "UPDATE m_barang SET ID_KATEGORI = :ID_KATEGORI, NAMA_BARANG = :NAMA_BARANG, DESKRIPSI = :DESKRIPSI, SATUAN = :SATUAN, STATUS = :STATUS, UPDATED_BY = :UPDATED_BY, UPDATED_DATE = NOW() WHERE ID_BARANG = :ID_BARANG_GET";
+            $query = "UPDATE m_barang SET ID_BARANG = :ID_BARANG,ID_KATEGORI = :ID_KATEGORI, NAMA_BARANG = :NAMA_BARANG, DESKRIPSI = :DESKRIPSI, SATUAN = :SATUAN, STATUS = :STATUS, UPDATED_BY = :UPDATED_BY, UPDATED_DATE = NOW() WHERE ID_BARANG = :ID_BARANG_GET";
             $params = array(
+                ':ID_BARANG' => $ID_BARANG,
                 ':ID_KATEGORI' => $ID_KATEGORI,
                 ':NAMA_BARANG' => $NAMA_BARANG,
                 ':DESKRIPSI' => $DESKRIPSI,
                 ':SATUAN' => $SATUAN,
                 ':STATUS' => $STATUS,
                 ':UPDATED_BY' => $ID_USER,
-                ':ID_BARANG' => $ID_BARANG,
                 ':ID_BARANG_GET' => $ID_BARANG_GET
             );
             $editTingkatan = GetQuery2($query, $params);
