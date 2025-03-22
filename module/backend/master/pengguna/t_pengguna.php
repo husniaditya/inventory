@@ -116,6 +116,38 @@ if (isset($_GET['method']) && $_GET['method'] == 'delete') {
                 echo "<script>alert('Data gagal diubah');</script>";
             }
         }
+
+        if (isset($_POST['daftar'])) {
+            $ID_USER = createKode('m_user', 'ID_USER', 'USER', 3);
+            $USERNAME = $_POST['USERNAME'];
+            $PASSWORD = $_POST['USERPASSWORD'];
+            $NAMA = $_POST['NAMA'];
+            $EMAIL = $_POST['EMAIL'];
+            $AKSES = '';
+            
+            $USER_PASSWORD = password_hash($PASSWORD, PASSWORD_BCRYPT, $options);
+
+            // Update Query
+            $query = "INSERT INTO m_user (ID_USER, USERNAME, USERPASSWORD, NAMA, EMAIL, AKSES, CREATED_BY, CREATED_DATE) VALUES (:ID_USER, :USERNAME, :PASSWORD, :NAMA, :EMAIL, :AKSES, :CREATED_BY, NOW())";
+            $params = array(
+                ':ID_USER' => $ID_USER,
+                ':USERNAME' => $USERNAME,
+                ':PASSWORD' => $USER_PASSWORD,
+                ':NAMA' => $NAMA,
+                ':EMAIL' => $EMAIL,
+                ':AKSES' => $AKSES,
+                ':CREATED_BY' => 'Register'
+            );
+            $editTingkatan = GetQuery2($query, $params);
+
+            // Check if the query executed successfully
+            if ($editTingkatan->rowCount() > 0) {
+                echo "<script>alert('Pengguna berhasil didaftarkan');</script>";
+                echo "<script>document.location.href='index.php';</script>";
+            } else {
+                echo "<script>alert('Pendaftaran pengguna gagal');</script>";
+            }
+        }
     }
 }
 ?>

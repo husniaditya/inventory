@@ -30,12 +30,18 @@
                     <!-- Error container -->
                     <div id="error-container"class="mb15"></div>
                     <!--/ Error container -->
+
                     <div class="form-group nm">
                         <button type="submit" name="login" class="btn btn-block btn-success"><span class="semibold">Masuk</span></button>
                     </div>
                 </div>
             </form>
             <!-- Login form -->
+
+
+            <hr><!-- horizontal line -->
+
+            <p class="text-muted text-center">Tidak punya akun? <a class="semibold" href="daftar.php">Segera daftar di sini</a></p>
 
             <hr><!-- horizontal line -->
 
