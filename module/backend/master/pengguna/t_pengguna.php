@@ -128,6 +128,19 @@ if (isset($_GET['method']) && $_GET['method'] == 'delete') {
             
             $USER_PASSWORD = password_hash($PASSWORD, PASSWORD_BCRYPT, $options);
 
+            // Check if username exist
+            $query = "SELECT * FROM m_user WHERE USERNAME = :USERNAME";
+            $params = array(':USERNAME' => $USERNAME);
+            $getUser = GetQuery2($query, $params);
+            $rowUser = $getUser->fetchAll(PDO::FETCH_ASSOC);
+
+            // if exist then show alert and stop process
+            if ($getUser->rowCount() > 0) {
+                echo "<script>alert('Username sudah terdaftar');</script>";
+                echo "<script>document.location.href='daftar.php';</script>";
+            }
+
+
             // Update Query
             $query = "INSERT INTO m_user (ID_USER, USERNAME, USERPASSWORD, NAMA, EMAIL, AKSES, CREATED_BY, CREATED_DATE) VALUES (:ID_USER, :USERNAME, :PASSWORD, :NAMA, :EMAIL, :AKSES, :CREATED_BY, NOW())";
             $params = array(
