@@ -16,7 +16,6 @@ if (isset($_GET['method']) && $_GET['method'] == 'delete') {
         echo "<script>alert('Data gagal dihapus');</script>";
     }
 } else {
-    $ID_USER_LOGIN = $_SESSION['LOGINUS_INV'];
 
     $query = "SELECT *,CASE WHEN STATUS = 1 THEN 'Aktif' ELSE 'Tidak Aktif' END STATUS_DETAIL FROM m_user";
     $params = array();
@@ -29,6 +28,7 @@ if (isset($_GET['method']) && $_GET['method'] == 'delete') {
 
     // Get Data for Edit or View
     if (isset($_GET['id'])) {
+        $ID_USER_LOGIN = $_SESSION['LOGINUS_INV'];
         $ID_USER_GET = $_GET['id'];
         $query = "SELECT *,CASE WHEN STATUS = 1 THEN 'Aktif' ELSE 'Tidak Aktif' END STATUS_DETAIL FROM m_user WHERE ID_USER = :ID_USER";
         $params = array(':ID_USER' => $ID_USER_GET);
@@ -86,7 +86,8 @@ if (isset($_GET['method']) && $_GET['method'] == 'delete') {
         }
     } else { // Add Data
         if (isset($_POST['simpan'])) {
-            $ID_USER = createKode('m_user', 'ID_USER', 'USER', 3);
+            $ID_USER_LOGIN = $_SESSION['LOGINUS_INV'];
+            $ID_USER = createKode('m_user', 'ID_USER', 'USR', 3);
             $USERNAME = $_POST['USERNAME'];
             $PASSWORD = $_POST['USERPASSWORD'];
             $NAMA = $_POST['NAMA'];
@@ -118,7 +119,7 @@ if (isset($_GET['method']) && $_GET['method'] == 'delete') {
         }
 
         if (isset($_POST['daftar'])) {
-            $ID_USER = createKode('m_user', 'ID_USER', 'USER', 3);
+            $ID_USER = createKode('m_user', 'ID_USER', 'USR', 3);
             $USERNAME = $_POST['USERNAME'];
             $PASSWORD = $_POST['USERPASSWORD'];
             $NAMA = $_POST['NAMA'];
